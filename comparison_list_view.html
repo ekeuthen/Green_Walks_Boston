@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<!--Emily Keuthen
+ekeuthen@gmail.com
+May 2013
+
+References:
+http://tablesorter.com/docs/-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Green Walks Boston - Comparison List View</title>
+	<link rel="stylesheet" type="text/css" href=green_style.css>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/tablesorter/jquery.tablesorter.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/tablesorter/themes/blue/style.css" />
+	<link rel="icon" type="image/png" href=favicon.ico>
+</head>
+
+<body>
+	<h1>Green Walks Boston</h1>
+	<h2>Places to walk and enjoy nature, in and around Boston and Cambridge</h2>
+	
+	<nav>
+		<a href="green_walks_boston.html">Map View Home</a>
+		<a href="comparison_list_view.html" class="here">Comparison List View</a>
+	</nav><br />
+	
+	<table id="comparison_view" class="tablesorter">
+	  <thead>
+		<tr>
+		  <th>Location</th>
+		  <th>MBTA accessible</th>
+		  <th>Parking</th>
+		  <th>Dog friendly</th>
+		  <th>Bikes allowed</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr>
+		  <td><a href="arnold_arboretum.html">Arnold Arboretum</a></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Belle Isle Marsh</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Boston Harbor Islands</a></td>
+		  <td></td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Castle Island</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Charles River</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Franklin Park</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Fresh Pond</a></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Greenway</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Harborwalk</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Jamaica Pond</a></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Minuteman Bikeway</a></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		</tr>
+		<tr>
+		  <td><a href="">Mount Auburn Cemetary</a></td>
+		  <td>&#x2713;</td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td></td>
+		</tr>
+		<tr>
+		  <td><a href="">Public Garden</a></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		  <td>&#x2713;</td>
+		  <td></td>
+		</tr>
+	  </tbody>
+	</table>
+	
+	<script type="text/javascript">
+		$(document).ready(function() 
+		{ 
+			$("#comparison_view").tablesorter({widthFixed: false, widgets: ['zebra'], sortList: [[0,0]]}); 
+		}); 
+	</script>
+	
+</body>
+  
+</html>

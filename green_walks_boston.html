@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!--Emily Keuthen
+ekeuthen@gmail.com
+May 2013
+
+Resources
+https://developers.google.com/maps/documentation/javascript/reference
+http://stackoverflow.com/questions/2972242/google-maps-v3-infowindow-with-hyperlink-does-not-work
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+<head> 
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+	<title>Green Walks Boston</title> 
+	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href=green_style.css>
+	<link rel="icon" type="image/png" href=favicon.ico>
+</head> 
+
+<body>
+	<h1>Green Walks Boston</h1>
+	<h2>Places to walk and enjoy nature, in and around Boston and Cambridge</h2>
+	<nav>
+		<a href="green_walks_boston.html" class="here">Map View Home</a>
+		<a href="comparison_list_view.html">Comparison List View</a>
+	</nav>
+	<br />
+
+	<div id="map" style="width: 900px; height: 450px;"></div>
+
+	<script type="text/javascript">
+		var locations = [
+			['<a href="arnold_arboretum.html">Arnold Arboretum</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" checked="checked" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3072, -71.1194],
+			['<a href="">Belle Isle Marsh</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3903, -70.9918],
+			['<a href="">Boston Common</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3568, -71.0634],
+			['<a href="">Boston Harbor Islands</a><br /><input type="checkbox" onclick="return false" />MBTA accessible<br /><input type="checkbox"  onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3207, -70.9286],
+			['<a href="">Castle Island</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3373, -71.0106],
+			['<a href="">Charles River</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox"  onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3684, -71.1182],
+			['<a href="">Franklin Park</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" checked="checked" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3029, -71.0867],
+			['<a href="">Fresh Pond</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" checked="checked" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3823, -71.1463],
+			['<a href="">Greenway</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3649, -71.0587],
+			['<a href="">Harborwalk</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3548, -71.0471],
+			['<a href="">Jamaica Pond</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" checked="checked" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3192, -71.1200],
+			['<a href="">Minuteman Bikeway</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" checked="checked" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3986, -71.1441],
+			['<a href="">Mount Auburn Cemetary</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" checked="checked" onclick="return false" />Parking<br /><input type="checkbox" onclick="return false" />Dog friendly<br /><input type="checkbox" onclick="return false" />Bikes allowed<br />', 42.3753, -71.1450],
+			['<a href="">Public Garden</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" onclick="return false" />Bikes allowed<br />', 42.3557, -71.0696],
+			['<a href="">Southwest Corridor Park</a><br /><input type="checkbox" checked="checked" onclick="return false" />MBTA accessible<br /><input type="checkbox" onclick="return false" />Parking<br /><input type="checkbox" checked="checked" onclick="return false" />Dog friendly<br /><input type="checkbox" checked="checked" onclick="return false" />Bikes allowed<br />', 42.3467, -71.0770],
+		];
+
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 12,
+			center: new google.maps.LatLng(42.353216, -71.040001),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+
+		var infowindow = new google.maps.InfoWindow();
+
+		var marker, i;
+
+		for (i = 0; i < locations.length; i++) {  
+			marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			map: map
+		  });
+
+		  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				infowindow.setContent(locations[i][0]);
+				infowindow.open(map, marker);
+			}
+		  })(marker, i));
+		}
+	</script>
+	
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+/*Emily Keuthen
+ekeuthen@gmail.com
+May 2013*/
+
+body {
+	font-family: calibri, arial, helevtica, sans-serif;
+}
+
+h1, h2{
+	text-align: center;
+	padding: 0px;
+	line-height: 5px;
+}
+
+nav, nav a{
+	padding: 0px 20px 5px;
+	text-align: center;
+}
+
+#map, #comparison_view{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#location_detail{
+	float: right;
+	width: 50%;
+	text-align: center;
+}
+
+#images {
+	float: left;
+	width: 50%;
+	text-align:center;
+	border: none;
+}
+
+#widgets div {
+	display: inline;
+}
+
+a:link, a:visited, a:hover, a:active { 
+    text-decoration: underline; 
+    color: blue;
+}
+
+a.here {
+	text-decoration:none;
+}
